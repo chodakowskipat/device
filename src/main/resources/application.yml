@@ -1,0 +1,18 @@
+nats:
+  server:
+    url: ${NATS_SERVER}
+  stream:
+    devices: devices
+  subject:
+    device-wildcard: device.*
+    device-add: device.add
+    device-remove: device.remove
+
+spring.datasource:
+  driverClassName: org.h2.Driver
+  password: pass
+  url: jdbc:h2:mem:device-api
+  username: user
+spring.h2:
+  console:
+    enabled: true

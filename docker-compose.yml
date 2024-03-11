@@ -1,0 +1,17 @@
+services:
+  nats-server:
+    image: nats:latest
+    ports:
+      - 4222:4222
+    command: ["-js"]
+
+  device_api:
+    environment:
+      NATS_SERVER: nats://nats-server:4222
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - nats-server
